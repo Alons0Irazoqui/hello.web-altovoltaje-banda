@@ -1,0 +1,287 @@
+/* ============================================
+   ALTO VOLTAJE — Custom Styles
+   Cinematic Desert / Black High Voltage
+   ============================================ */
+
+/* ---- Base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ---- Brand Utility Colors ---- */
+.text-smoke-white    { color: #e3e2df; }
+.text-metallic-silver{ color: #bfc8ca; }
+.bg-carbon-coffee    { background-color: #221209; }
+.border-electric-gold{ border-color: #e5a036; }
+.text-electric-gold  { color: #e5a036; }
+.bg-electric-gold    { background-color: #e5a036; }
+
+/* ---- Glow hover ---- */
+.glow-gold {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.glow-gold:hover {
+    box-shadow: 0 0 28px rgba(229, 160, 54, 0.45);
+    transform: translateY(-2px);
+}
+
+/* ---- Cinematic vignette ---- */
+.cinematic-vignette {
+    background: radial-gradient(circle, transparent 40%, rgba(3, 1, 1, 0.82) 100%);
+}
+
+/* ---- Gold gradient border ---- */
+.gold-border-gradient { position: relative; }
+.gold-border-gradient::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(45deg, #e5a036, #bfc8ca, #e5a036) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* ---- Scroll-reveal base state ---- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---- Stagger cards base (controlled by Anime.js) ---- */
+.stagger-card { opacity: 0; transform: translateY(30px); }
+
+/* ---- Hero image: Ken Burns + parallax ---- */
+#hero-bg {
+    will-change: transform, opacity;
+    transform-origin: center top;
+}
+
+@keyframes kenBurns {
+    0%   { transform: scale(1.10) translateY(0px); }
+    100% { transform: scale(1.02) translateY(-18px); }
+}
+.hero-ken-burns {
+    animation: kenBurns 12s ease-out forwards;
+}
+
+/* ---- Section label chip ---- */
+.section-chip {
+    display: inline-block;
+    padding: 4px 16px;
+    background: rgba(87, 69, 1, 0.3);
+    border: 1px solid rgba(255, 189, 95, 0.3);
+    border-radius: 999px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffbd5f;
+}
+
+/* ---- Benefit card ---- */
+.benefit-card {
+    background: #221209;
+    border: 1px solid rgba(229, 160, 54, 0.18);
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.4s ease, transform 0.4s ease;
+}
+.benefit-card:hover {
+    border-color: #e5a036;
+    transform: translateY(-4px);
+}
+.benefit-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(229, 160, 54, 0.12);
+    border-radius: 50%;
+}
+.benefit-icon .material-symbols-outlined {
+    font-size: 32px;
+    color: #ffbd5f;
+}
+
+/* ---- Contact form inputs ---- */
+.form-input {
+    width: 100%;
+    background: #0d0f0d;
+    border: 1px solid #9e8e7c;
+    border-radius: 0.25rem;
+    padding: 0.85rem 1rem;
+    color: #e3e2df;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+.form-input::placeholder { color: #9e8e7c; }
+.form-input:focus {
+    border-color: #e5a036;
+    box-shadow: 0 0 0 2px rgba(229, 160, 54, 0.15);
+}
+.form-input select { appearance: none; }
+
+textarea.form-input { resize: vertical; min-height: 120px; }
+
+/* ---- Form submit button ---- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #e5a036;
+    color: #452b00;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover {
+    background: #ffbd5f;
+    box-shadow: 0 0 24px rgba(229, 160, 54, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ---- WhatsApp floating button ---- */
+#wa-float {
+    position: fixed;
+    bottom: 28px;
+    left: 24px;
+    z-index: 999;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+    animation: waPulse 2.4s ease-in-out infinite;
+}
+#wa-float svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+}
+@keyframes waPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    50%       { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+}
+
+/* ---- Mobile menu ---- */
+#mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: rgba(18, 20, 18, 0.97);
+    border-top: 1px solid rgba(81, 69, 54, 0.3);
+    padding: 1.5rem 1rem 2rem;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    z-index: 49;
+}
+#mobile-menu.open { display: flex; }
+#mobile-menu a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #d6c4b0;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(81, 69, 54, 0.2);
+    transition: color 0.2s;
+}
+#mobile-menu a:hover { color: #ffbd5f; }
+
+/* ---- Nav active link ---- */
+.nav-link-active {
+    color: #ffbd5f !important;
+    border-bottom: 2px solid #ffbd5f;
+    padding-bottom: 2px;
+}
+
+/* ---- Divider line ---- */
+.divider-gold {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e5a036, transparent);
+    margin: 0 auto;
+}
+
+/* ---- Logistics grid ---- */
+.logistics-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: #1f201e;
+    border-left: 3px solid #e5a036;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+.logistics-item .material-symbols-outlined { color: #ffbd5f; flex-shrink: 0; margin-top: 2px; }
+
+/* ---- Map container ---- */
+.map-container {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.map-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(229, 160, 54, 0.3);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* ---- Stats counter ---- */
+.stat-block { text-align: center; }
+.stat-block .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    color: #ffbd5f;
+    letter-spacing: 0.05em;
+}
+.stat-block .stat-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9e8e7c;
+    margin-top: 4px;
+}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 767px) {
+    .form-grid { grid-template-columns: 1fr !important; }
+}
